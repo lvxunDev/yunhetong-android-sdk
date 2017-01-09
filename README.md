@@ -54,30 +54,7 @@
 
     <application android:theme="@style/SDKAppTheme">
 
-
 如果app有自定义主题，那么需要继承于SDKAppTheme
-
-
-如果是Eclipse开发环境，那么需要在AndroidManifest中注册SDK内的activity
-
-
-        <activity
-            android:name="com.yunhetong.sdk.UI.activity.ContractDetailActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.yunhetong.sdk.UI.activity.SignDetailActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity
-            android:name="com.yunhetong.sdk.UI.activity.SignGeneratorActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTask"
-            android:screenOrientation="landscape" >
-
-且 添加网络权限
-
-      <uses-permission android:name="android.permission.INTERNET" />
 
 准备完毕。
 ###2.2 初始化云合同SDK
@@ -167,6 +144,7 @@
 
     String contractUrl = new SdkRequestManaer().getContractUrl(contractId)；
     YhtWebView.loadUrl(contractUrl);
+    
 ####3.1.2 合同预览
 发起合同预览请求，返回合同详细信息
 

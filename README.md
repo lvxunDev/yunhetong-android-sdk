@@ -195,7 +195,6 @@
 ###3.2 签名操作基本功能
 云合同签名管理模块是指第三方App对用户的签名信息进行操作的功能。
 
-开发者只需要调用SDK提供的 YhtSdk.class 类中方法，即可完成签名查看，绘制及删除功能。
 
 ####3.2.1 签名查看
 用户查看签名请求，返回签名详情信息，具体在YhtSign类中查看
@@ -203,7 +202,7 @@
     new SdkRequestManaer().signDetail(requestCode,onCallBackListener);
     
 ####3.2.2 签名创建
-Sdk提供签名绘制面板
+Sdk提供签名绘制面板YhtSignDrawView，有获取签名数据和清除签名的
 用户绘制签名，并可对绘制签名执行采用或清除的功能
 
     new SdkRequestManaer().signGenerate(signData,requestCode,onCallBackListener);

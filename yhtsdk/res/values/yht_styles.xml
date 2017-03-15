@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AlertDialogStyle" parent="@style/Theme.AppCompat">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+    <style name="SDKAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="actionMenuTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Menu.yht_base</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.AppCompat.PopupMenu.Overflow.yht_base</item>
+    </style>
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Menu.yht_base" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Widget.AppCompat.PopupMenu.Overflow.yht_base" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+
+        <item name="android:popupBackground">@drawable/yht_menu_dropdown_panel</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:dropDownVerticalOffset">45dip</item>
+        <item name="android:dropDownHorizontalOffset">-4dip</item>
+    </style>
+</resources>

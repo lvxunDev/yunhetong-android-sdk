@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_alph60"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/signView_margin"
+        android:gravity="center"
+        android:text="@string/sign_hint"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/main_textSize"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_progress_height"
+        android:layout_marginLeft="@dimen/signView_margin"
+        android:layout_marginRight="@dimen/signView_margin"
+        android:background="@drawable/yht_sign_view_bg"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/yht_iv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/signView_height"
+            android:visibility="gone"
+        />
+
+        <ImageView
+            android:id="@+id/yht_iv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/signView_height"
+            android:src="@drawable/yht_ic_sign_add"
+            android:visibility="gone"
+        />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/yht_btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_margin="@dimen/button_margin"
+        android:background="@drawable/yht_btn_style_selector"
+        android:text="@string/delete"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_textSize"
+        android:visibility="gone"
+    />
+
+</LinearLayout>

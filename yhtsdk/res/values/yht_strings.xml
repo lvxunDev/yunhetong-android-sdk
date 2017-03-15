@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">yhtSDK</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="sign">签署</string>
+    <string name="invalid">作废</string>
+    <string name="delete">删除</string>
+    <string name="sign_hint">只能创建一个签名，使用过的签名不能删除</string>
+    <string name="tip_loading">加载中</string>
+    <string name="sign_create">采用</string>
+    <string name="sign_delete">清除</string>
+</resources>

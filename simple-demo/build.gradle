@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.1'
+
+    defaultConfig {
+        applicationId "com.lx.yht"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    sourceSets {//目录指向配置
+        main {
+            manifest.srcFile 'AndroidManifest.xml'//指定AndroidManifest文件
+            java.srcDirs = ['src']//指定source目录
+            resources.srcDirs = ['src']//指定source目录
+            aidl.srcDirs = ['src']//指定source目录
+            renderscript.srcDirs = ['src']//指定source目录
+            res.srcDirs = ['res']//指定资源目录
+            assets.srcDirs = ['assets']//指定assets目录
+            jniLibs.srcDirs = ['libs']//指定lib库目录
+
+        }
+        debug.setRoot('build-types/debug')//指定debug模式的路径
+        release.setRoot('build-types/release')//指定release模式的路径
+
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile project(':yhtsdk')
+}

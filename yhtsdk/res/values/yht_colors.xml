@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="common_bt_bg">#4081FF</color>
+    <color name="text_color">#6A6A6A</color>
+    <color name="gray">#959494</color>
+    <color name="gray_alph30">#D6D7D7</color>
+    <color name="common_app_bg">#FFF1F1EE</color>
+    <color name="gray_alph60">#F1F0EE</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main_btn_bg_aph30">#e14081ff</color>
+    <color name="main_btn_bg">#4081FF</color>
+    <color name="dark_blue">#264c97</color>
+</resources>

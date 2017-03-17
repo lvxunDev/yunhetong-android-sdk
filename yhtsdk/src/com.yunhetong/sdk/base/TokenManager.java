@@ -31,11 +31,11 @@ public final class TokenManager {
     private Context mContext;
     private Token.TokenListener mListener;
 
-    public void initToken(Application application, String token, Action action) {
+    public void initToken(Context context, String token, Action action) {
         if (null == mToken) {
             mToken = new Token();
         }
-        this.mContext = application.getApplicationContext();
+        this.mContext = context;
         mToken.init(token, 0);
         YhtSPUtils.put(mContext, TOKEN, mToken.getToken());
         YhtSPUtils.put(mContext, TOKEN_TIME, mToken.getDate());

@@ -1,6 +1,7 @@
 package com.yunhetong.sdk;
 
 import android.app.Application;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.yunhetong.sdk.base.net.Action;
@@ -15,7 +16,7 @@ import com.yunhetong.sdk.tool.YhtLog;
  */
 public final class YhtSdk {
     private static YhtSdk instance = new YhtSdk();
-    private Application mApplication;
+    private Context mContext;
 
 
     private YhtSdk() {
@@ -39,12 +40,12 @@ public final class YhtSdk {
      * 初始化回调
      * 在回调接口的方法里，第三方开发者实现获取token的异步请求
      *
-     * @param application
+     * @param context
      * @param listener    回调接口
      */
-    public void initYhtSdk(Application application, Token.TokenListener listener) {
-        mApplication = application;
-        YhtHttpClient.getInstance().initClient(application);
+    public void initYhtSdk(Context context, Token.TokenListener listener) {
+        mContext = context.getApplicationContext();
+        YhtHttpClient.getInstance().initClient(mContext);
         TokenManager.getInstance().setTokenListener(listener);
     }
 
@@ -55,7 +56,7 @@ public final class YhtSdk {
      */
     public void setToken(String token, Action action) {
         if (TextUtils.isEmpty(token)) throw new NullPointerException("Token is null");
-        TokenManager.getInstance().initToken(mApplication, token, action);
+        TokenManager.getInstance().initToken(mContext, token, action);
     }
 
 

@@ -1,41 +1,29 @@
 apply plugin: 'com.android.library'
-/*自动化发布插件*/
-/*apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'*/
 android {
     compileSdkVersion 25
-    buildToolsVersion '24.0.3'
-//    resourcePrefix "yhtsdk_"
+    buildToolsVersion '25.0.1'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
-    sourceSets {//目录指向配置
+    sourceSets {
         main {
-            manifest.srcFile 'AndroidManifest.xml'//指定AndroidManifest文件
-            java.srcDirs = ['src']//指定source目录
-            resources.srcDirs = ['src']//指定source目录
-            aidl.srcDirs = ['src']//指定source目录
-            renderscript.srcDirs = ['src']//指定source目录
-            res.srcDirs = ['res']//指定资源目录
-            assets.srcDirs = ['assets']//指定assets目录
-            jniLibs.srcDirs = ['libs']//指定lib库目录
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
 
         }
-        debug.setRoot('build-types/debug')//指定debug模式的路径
-        release.setRoot('build-types/release')//指定release模式的路径
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
 
     }
-//    buildTypes {
-//        release {
-//            minifyEnabled true  //是否混淆
-//            shrinkResources true //除去不用混淆的资源文件
-//            zipAlignEnabled true
-//            proguardFiles 'E:/Android_Git_workspace/git_sdk/sdk_android/yunhetongSDK/yhtsdk/proguard-android.txt'
-//        }
-//    }
     buildTypes {
         debug {
             debuggable false
@@ -52,13 +40,8 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.zhy:okhttputils:2.6.2' //https://github.com/hongyangAndroid/okhttputils
-    /**Retrofit2 + RxJava
-     compile 'com.squareup.retrofit2:retrofit:2.0.0'
-     compile 'com.squareup.retrofit2:converter-gson:2.0.0'
-     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'**/
     compile 'com.google.code.gson:gson:2.8.0'
 }
 

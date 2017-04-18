@@ -9,9 +9,9 @@ package com.yunhetong.sdk;
 public final class YhtContent {
 
     //测试
-    public static final String YHT_HOST = "http://testsdk.yunhetong.com/sdk";
+//    public static final String YHT_HOST = "http://testsdk.yunhetong.com/sdk";
     //正式
-//    public static final String YHT_HOST = "http://sdk.yunhetong.com/sdk";
+    public static final String YHT_HOST = "http://sdk.yunhetong.com/sdk";
 
 
     /**

@@ -47,9 +47,12 @@
         
 
     <meta-data android:name="YhtSdk_AppId" android:value="id_(获取的appid)"/> //注意添加前缀"id_"
+####2.1.2 切换环境
+将SDK中YhtContent 的YHT_HOST 切换成正式环境的host。
 
+	public static final String YHT_HOST = "http://sdk.yunhetong.com";
 
-####2.1.1 app主题设置
+####2.1.3 app主题设置
 在```AndroidManifest.xml```中添加app主题。
 
     <application android:theme="@style/SDKAppTheme">

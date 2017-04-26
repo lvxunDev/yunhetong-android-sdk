@@ -3,10 +3,12 @@ package com.yunhetong.sdk.base.net;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.yunhetong.sdk.base.RespondObject;
 import com.yunhetong.sdk.base.SdkAppIdNullException;
+import com.yunhetong.sdk.base.Token;
 import com.yunhetong.sdk.base.TokenManager;
 import com.yunhetong.sdk.tool.YhtLog;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -32,7 +34,7 @@ public class YhtHttpClient {
 
     private static YhtHttpClient mHttpClient = null;
 
-    private String APPID;
+    private String appId;
     private Context mContext;
 
     private YhtHttpClient() {
@@ -64,16 +66,15 @@ public class YhtHttpClient {
             appInfo = mContext.getPackageManager()
                     .getApplicationInfo(mContext.getPackageName(), PackageManager.GET_META_DATA);
             String yhtSdk_appId = appInfo.metaData.getString("YhtSdk_AppId");
-            APPID = yhtSdk_appId.replace("id_", "");
-            YhtLog.d(TAG, "appid :" + APPID);
+            appId = yhtSdk_appId.replace("id_", "");
+            YhtLog.d(TAG, "appid :" + appId);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new SdkAppIdNullException("appId 没有找到,请在AndroidManifest中配置 <meta-data android:name=\"YhtSdk_AppId\" android:value=\"id_2016050516421\" />");
         }
     }
 
-    public String getAppId() {
-        return APPID;
+    private String getAppId() {
+        return appId;
     }
 
 
@@ -91,8 +92,8 @@ public class YhtHttpClient {
         try {
             Long.valueOf(getAppId());
             map.put("appid", getAppId());
-        } catch (Exception e) {
-
+        } catch (NumberFormatException e) {
+            Toast.makeText(mContext,"appid格式错误,请检查", Toast.LENGTH_LONG).show();
         }
         if (YhtLog.DEBUG) {
             paramstoString(map);
@@ -151,13 +152,13 @@ public class YhtHttpClient {
             Long.valueOf(getAppId());
             map.put("appid", getAppId());
         } catch (Exception e) {
-
+            Toast.makeText(mContext,"appid格式错误,请检查", Toast.LENGTH_LONG).show();
         }
         doNetworkGet(url, requestCode, map, onCallBack);
     }
 
 
-    public void doNetworkGet(final String url, final byte requestCode, final Map<String, String> params, final HttpCallBackListener<String> onCallBack) {
+    private void doNetworkGet(final String url, final byte requestCode, final Map<String, String> params, final HttpCallBackListener<String> onCallBack) {
         if (tokenValidationCheck()) {
             Action action = new Action(url, requestCode, Request.Method.GET, params, onCallBack);
             TokenManager.getInstance().getTokenListener().onToken(action);
@@ -166,19 +167,19 @@ public class YhtHttpClient {
 
         String paramsStr = paramstoString(params);
         paramsStr = paramsStr.substring(0, paramsStr.length() - 1);
-        final String urlCurr = url + "?" + paramsStr.toString();
+        final String urlCurr = url + "?" + paramsStr;
         //OkHttp
         OkHttpUtils.get().url(urlCurr).build().execute(new MyCallBack(urlCurr, requestCode, params, onCallBack));
 
     }
 
-    class MyCallBack extends StringCallback {
+    private class MyCallBack extends StringCallback {
         private String url;
         private byte requestCode;
         private Map<String, String> params;
         private HttpCallBackListener<String> onCallBack;
 
-        public MyCallBack(String url, byte requestCode, Map<String, String> params, HttpCallBackListener<String> onCallBack) {
+        private MyCallBack(String url, byte requestCode, Map<String, String> params, HttpCallBackListener<String> onCallBack) {
             this.url = url;
             this.requestCode = requestCode;
             this.params = params;
@@ -211,7 +212,7 @@ public class YhtHttpClient {
 
         @Override
         public String parseNetworkResponse(okhttp3.Response response, int id) throws IOException {
-            YhtLog.d(TAG, "parseNetworkResponse"+response.message());
+            YhtLog.d(TAG, "parseNetworkResponse" + response.message());
             return super.parseNetworkResponse(response, id);
         }
     }

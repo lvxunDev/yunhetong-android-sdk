@@ -54,12 +54,20 @@
 
     <application android:theme="@style/SDKAppTheme">
 
-如果app有自定义主题，那么需要继承于SDKAppTheme
+如果app有自定义主题，可以选择将自定义的Theme 设置为
+
+    <style name="myAppTheme" parent="SDKAppTheme">
+
+若有冲突，不能用上述办法，可将主题Theme添加至sdk中具体的activity节点上，如：
+   
+    <activity
+            android:name="com.yunhetong.sdk.***Activity"
+            android:theme="@style/SDKAppTheme"/>
 
 准备完毕。
 ###2.2 初始化云合同SDK
 
-第三方APP开发者自定义Application类，在onCreat方法中初始化SDK
+第三方开发者自定义Application类，在onCreat方法中初始化SDK
 
 	// 云合同SDK初始化
      @Override
@@ -74,11 +82,10 @@
         });
     }
 
-获取token异步请求成功并返回token后，初始化token数据
+获取Token的请求，获取token请求成功并返回token后，初始化token数据
 
     //初始化Token 
     YhtSdk.getInstance().setToken(tokenStr, action);
-
 
 初始化基本完成,详情步骤参考simple-demo
 
@@ -112,9 +119,6 @@
         }
     }
 
-快速集成**合同预览**，可使用SDK提供的```ContractPreviewActivity```
-
-静态方法进入，传入相应的参数即可。
 
 快速集成**签名的查看，删除功能**，可使用SDK提供的```SignDetailActivity```
 
@@ -145,24 +149,14 @@
     String contractUrl = new SdkRequestManaer().getContractUrl(contractId)；
     YhtWebView.loadUrl(contractUrl);
     
-####3.1.2 合同预览
-发起合同预览请求，返回合同详细信息
 
-    new SdkRequestManaer().contractDetail( contractId, 
-                                           requestCode,
-                                           onCallBackListener);
-加载合同预览页
-
-    String contractUrl = new SdkRequestManaer().getPreviewContractUrl(contractId)；
-    YhtWebView.loadUrl(contractUrl);
-
-####3.1.3 合同签署
+####3.1.2 合同签署
 
     new SdkRequestManaer().contractSign(contractId,  
                                         requestCode,
                                         onCallBackListener)；
    
-####3.1.4 合同作废
+####3.1.3 合同作废
 
 对接用户对至少有一人已签署但尚未签署完成的合同执行的作废的功能。
     
@@ -201,7 +195,7 @@ Sdk提供签名绘制面板YhtSignDrawView，有获取签名数据和清除签�
 
 |   YhtSdk                      |  SDK的入口类。提供SDK初始化,token初始化，相关请求的方法。        |
 
-|   YhtContent                  |  常量类，提供接口URL,请求码，常量                                   |
+|   YhtContent                  |  常量类，提供接口URL,请求码，常量                            |
 
 |   RespondObject               |  网络响应类                             |
 
@@ -217,7 +211,7 @@ Sdk提供签名绘制面板YhtSignDrawView，有获取签名数据和清除签�
 
 |   SignDetailActivity          |  签名信息页，集成签名查看、签名删除功能                |
 
-|   SignGeneratorActivity       |  新增签名页，集成签名绘制画板，签名创建功能                        |
+|   SignGeneratorActivity       |  新增签名页，集成签名绘制画板，签名创建功能                |
 
 |   YhtSignDrawView             |  签名画板                                                 |
 

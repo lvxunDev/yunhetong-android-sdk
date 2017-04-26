@@ -14,8 +14,6 @@ import org.json.JSONObject;
 
 public class MyApplication extends Application implements Token.TokenListener {
 
-    private static final String TAG = "Application";
-
     @Override
     public void onCreate() {
         super.onCreate();

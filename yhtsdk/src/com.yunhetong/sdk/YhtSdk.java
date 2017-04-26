@@ -18,9 +18,7 @@ public final class YhtSdk {
     private static YhtSdk instance = new YhtSdk();
     private Context mContext;
 
-
-    private YhtSdk() {
-    }
+    private YhtSdk() {}
 
     public static YhtSdk getInstance() {
         return instance;

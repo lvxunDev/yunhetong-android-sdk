@@ -29,17 +29,8 @@ public class LoginActivity extends BaseActivity {
 
     private void initUi() {
 
-        Button button4 = (Button) findViewById(R.id.button);
-        button4.setVisibility(View.VISIBLE);
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ConfirmPreviewActivity.gotoConfirmPreviewAct(LoginActivity.this);
-            }
-        });
-
+        //发起方签署入口
         Button button = (Button) findViewById(R.id.button1);
-        assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,17 +38,18 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        //接收方签署入口
         Button button2 = (Button) findViewById(R.id.button2);
-        assert button2 != null;
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ContractListActivity.gotoContractListAct(LoginActivity.this);
             }
         });
+
+        //签名查看入口
         if (false) {
             Button button3 = (Button) findViewById(R.id.button3);
-            assert button3 != null;
             button3.setVisibility(View.VISIBLE);
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override

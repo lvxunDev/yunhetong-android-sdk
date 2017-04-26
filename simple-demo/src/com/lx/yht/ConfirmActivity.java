@@ -36,14 +36,12 @@ public class ConfirmActivity extends BaseActivity {
         initUi();
     }
 
-
     private void initBar() {
         getBar().setTitle("确认支付细节");
     }
 
     private void initUi() {
         Button button = (Button) findViewById(R.id.button);
-        assert button != null;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +74,6 @@ public class ConfirmActivity extends BaseActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     contractId = jsonObject.optLong("contractId");
                     token = jsonObject.optString("token");
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -85,6 +82,8 @@ public class ConfirmActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(token)) {
                     YhtSdk.getInstance().setToken(token,null);
                     ContractDetailActivity.gotoContractDetailActForResult(ConfirmActivity.this, String.valueOf(contractId));
+                }else {
+                    Toast.makeText(ConfirmActivity.this, "返回token为null", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -15,12 +15,6 @@ public interface IYhtSdkRequest {
      */
     void contractDetail(String contractId, String notificaParams,byte requestCode,HttpCallBackListener<String> onCallBackListener);
 
-    /**
-     * 合同预览
-     * @param onCallBackListener
-     * @param contractId
-     */
-    void contractPreview(String contractId,byte requestCode,HttpCallBackListener<String> onCallBackListener);
 
     /**
      * 合同作废
@@ -38,13 +32,6 @@ public interface IYhtSdkRequest {
      */
     void contractSign(String contractId,byte requestCode,HttpCallBackListener<String> onCallBackListener);
 
-    /**
-     * 合同签署
-     * 双方签署
-     * @param onCallBackListener
-     * @param contractId
-     */
-    void contractSignAll(String contractId,byte requestCode,HttpCallBackListener<String> onCallBackListener);
 
     /**************************签名的请求****************************/
     /**

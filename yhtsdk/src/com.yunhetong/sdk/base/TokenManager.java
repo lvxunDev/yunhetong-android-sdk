@@ -51,7 +51,7 @@ public final class TokenManager {
     private Token getTokenBean() {
         if (null == mToken) {
             mToken = new Token();
-            String tkStr = YhtSPUtils.getString(mContext, TOKEN, " ");
+            String tkStr = YhtSPUtils.getString(mContext, TOKEN, "");
             Long tkTime = YhtSPUtils.getLong(mContext, TOKEN_TIME, 0);
             mToken.init(tkStr, tkTime);
         }

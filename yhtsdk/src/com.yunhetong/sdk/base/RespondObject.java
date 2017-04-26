@@ -23,32 +23,27 @@ public class RespondObject {
     }
 
     public boolean isOk() {
-        if (!TextUtils.isEmpty(code) && code.equals("200")) return true;
-        return false;
+        return !TextUtils.isEmpty(code) && code.equals("200");
     }
 
     /**
      * token错误
      */
     public boolean isInvalid() {
-        if (!TextUtils.isEmpty(code) && code.equals("400")) return true;
-        return false;
+        return !TextUtils.isEmpty(code) && code.equals("400");
     }
 
     /**
      * 签名不存在
      */
     public boolean signNotExist() {
-        if (subCode.equals("10303")) return true;
-        return false;
+        return subCode.equals("10303");
     }
 
     public static RespondObject parseJSONToRespond(String jsonObjStr) {
         if (null != jsonObjStr) {
-            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class,
-                    new DateJsonDeserializer()).create();
-            RespondObject result = gson.fromJson(jsonObjStr, RespondObject.class);
-            return result;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new DateJsonDeserializer()).create();
+            return gson.fromJson(jsonObjStr, RespondObject.class);
         }
         return null;
     }

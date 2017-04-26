@@ -2,10 +2,11 @@ package com.yunhetong.sdk;
 
 import android.text.TextUtils;
 
+import com.yunhetong.sdk.base.TokenManager;
 import com.yunhetong.sdk.base.net.HttpCallBackListener;
 import com.yunhetong.sdk.base.net.IYhtSdkRequest;
-import com.yunhetong.sdk.base.TokenManager;
 import com.yunhetong.sdk.base.net.YhtHttpClient;
+import com.yunhetong.sdk.tool.YhtLog;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -25,24 +26,6 @@ public final class SdkRequestManaer implements IYhtSdkRequest {
         YhtHttpClient.getInstance().yhtNetworkPost(url, requestCode, map, wrOnCallBackListener.get());
     }
 
-    @Override
-    public void contractPreview(String contractId, byte requestCode, HttpCallBackListener<String> onCallBackListener) {
-        String url = YhtContent.URL_CONTRACTPREVIEW;
-        final WeakReference<HttpCallBackListener> wrOnCallBackListener = new WeakReference<HttpCallBackListener>(onCallBackListener);
-        Map<String, String> map = new HashMap<>();
-        map.put("contractId", contractId);
-        YhtHttpClient.getInstance().yhtNetworkPost(url, requestCode, map, wrOnCallBackListener.get());
-    }
-
-    @Override
-    public void contractSignAll(String contractId, byte requestCode, HttpCallBackListener<String> onCallBackListener) {
-        String url = YhtContent.URL_CONTRACTSIGN_ALL;
-        final WeakReference<HttpCallBackListener> wrOnCallBackListener = new WeakReference<HttpCallBackListener>(onCallBackListener);
-        Map<String, String> map = new HashMap<>();
-        map.put("contractId", contractId);
-        YhtHttpClient.getInstance().yhtNetworkPost(url, requestCode, map, wrOnCallBackListener.get());
-    }
-
     /**
      * 请求合同详情
      *
@@ -50,19 +33,9 @@ public final class SdkRequestManaer implements IYhtSdkRequest {
      */
     public static String getContractUrl(String contractId) {
         String contractUrl = YhtContent.URL_CONTRACTDETAILVIEW + "?contractId=" + contractId + "&token=" + TokenManager.getInstance().getToken();
+        YhtLog.d("YhtHttpClient", "ContractDetailUrl: " + contractUrl);
         return contractUrl;
     }
-
-    /**
-     * 请求合同预览
-     *
-     * @param contractId 合同Id
-     */
-    public static String getPreviewContractUrl(String contractId) {
-        String contractUrl = YhtContent.URL_CONTRACTPREVIEWVIEW + "?contractId=" + contractId + "&token=" + TokenManager.getInstance().getToken();
-        return contractUrl;
-    }
-
 
     @Override
     public void contractInvalid(String contractId, byte requestCode, HttpCallBackListener<String> onCallBackListener) {

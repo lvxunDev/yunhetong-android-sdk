@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#4081FF</color>
+    <color name="colorPrimaryDark">#4081FF</color>
+    <color name="colorAccent">#4081FF</color>
+
     <color name="common_bt_bg">#4081FF</color>
     <color name="text_color">#6A6A6A</color>
     <color name="gray">#959494</color>

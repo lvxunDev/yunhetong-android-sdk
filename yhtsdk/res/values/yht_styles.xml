@@ -15,6 +15,11 @@
         <!-- Customize your theme here. -->
         <item name="actionMenuTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Menu.yht_base</item>
         <item name="actionOverflowMenuStyle">@style/Widget.AppCompat.PopupMenu.Overflow.yht_base</item>
+
+        <!--actionbar color-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Menu.yht_base" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu">
         <item name="android:textSize">18sp</item>

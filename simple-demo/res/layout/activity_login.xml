@@ -14,31 +14,22 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:src="@mipmap/ic_app_logo" />
 
     <ImageView
         android:id="@+id/tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:src="@mipmap/ic_logopage_tip" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_border"
-        android:text="预览合同"
-        android:textColor="@color/dark_blue"
-        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/btn_border"
         android:text="发起人签署"
         android:textColor="@color/dark_blue"
@@ -48,7 +39,7 @@
         android:id="@+id/button2"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_border"
         android:text="接收方签署"
         android:textColor="@color/dark_blue"

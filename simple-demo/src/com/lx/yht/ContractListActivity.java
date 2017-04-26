@@ -15,7 +15,6 @@ import com.lx.yht.net.TokenRequest;
 import com.yunhetong.sdk.YhtSdk;
 import com.yunhetong.sdk.base.net.HttpCallBackListener;
 import com.yunhetong.sdk.base.bean.YhtContract;
-import com.yunhetong.sdk.fast.ContractPreviewActivity;
 import com.yunhetong.sdk.tool.YhtLog;
 import com.yunhetong.sdk.fast.base.BaseActivity;
 import com.yunhetong.sdk.fast.ContractDetailActivity;
@@ -93,11 +92,19 @@ public class ContractListActivity extends BaseActivity implements AdapterView.On
                 try {
                     JSONObject jsonObject = new JSONObject(object);
                     JSONObject jsonObject2 = jsonObject.optJSONObject("value");
+                    if (jsonObject2 == null) {
+                        Toast.makeText(ContractListActivity.this, "返回数据为null", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     tokenStr = jsonObject2.optString("token");
                     JSONArray jsonArr = jsonObject2.optJSONArray("contractList");
+                    if (jsonArr == null || jsonArr.length() == 0) {
+                        Toast.makeText(ContractListActivity.this, "返回合同数据为null", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     contracts = new ArrayList<>();
                     for (int i = 0; i < jsonArr.length(); i++) {
-                        JSONObject jsonO = jsonArr.getJSONObject(i);
+                        JSONObject jsonO = jsonArr.optJSONObject(i);
                         YhtContract contract = new YhtContract();
                         contract.setId(jsonO.optLong("id"));
                         contract.setTitle(jsonO.optString("title"));
@@ -105,11 +112,11 @@ public class ContractListActivity extends BaseActivity implements AdapterView.On
                         contracts.add(contract);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Toast.makeText(ContractListActivity.this, "返回数据为null", Toast.LENGTH_SHORT).show();
                 }
 
                 //初始化 并跳转
-                if (!TextUtils.isEmpty(tokenStr) && null != contracts && contracts.size() > 0) {
+                if (!TextUtils.isEmpty(tokenStr) && contracts.size() > 0) {
                     YhtSdk.getInstance().setToken(tokenStr, null);
                     mListView.setAdapter(new ContractAdapter(ContractListActivity.this, contracts));
                 }
@@ -140,11 +147,6 @@ public class ContractListActivity extends BaseActivity implements AdapterView.On
             }
             if (resultCode == ContractDetailActivity.result_code_signfinish) {
                 Toast.makeText(this, "签署完成", Toast.LENGTH_SHORT).show();
-            }
-        }
-        if (requestCode == ContractPreviewActivity.Request_code && resultCode == ContractDetailActivity.request_code) {
-            if (null != mListView) {
-                requestToken();
             }
         }
     }

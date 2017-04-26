@@ -189,7 +189,7 @@ public class ContractDetailFrag extends SdkBaseFragment implements ConfirmAlertD
                 YhtContract contract = YhtContract.jsonToBean(object);
                 YhtLog.d(TAG, "返回-合同详情 :" + contract.toString());
                 mRequestContractData = contract;
-                if (null != mYhtWebView && null != mRequestContractData) {
+                if (null != mYhtWebView ) {
                     setMenuState(mRequestContractData);
                     loadViewContractDetail();
                 }

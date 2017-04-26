@@ -9,10 +9,8 @@ public class SdkBaseException extends RuntimeException {
     public SdkBaseException() {
     }
 
-
     public SdkBaseException printStackTrace(String ff) {
         return new SdkBaseException(ff);
     }
-
 
 }

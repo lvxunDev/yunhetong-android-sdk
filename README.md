@@ -41,7 +41,7 @@
 
 ####2.1.1 获取AppId
 
-登录[云合同SDK开发者平台][1]，注册第三方应用，获取AppId
+登录[云合同SDK开发者平台][2]，注册第三方应用，获取AppId
 
 在第三方app应用AndroidManifest.xml中appliction节点内
         
@@ -221,6 +221,7 @@ Sdk提供签名绘制面板YhtSignDrawView，有获取签名数据和清除签�
 |   YhtWebView                  |  WeBView                                                  |
 
 
-  [1]: http://sdk.yunhetong.com/sdk/open/userApp/appManageView
+  [1]: https://github.com/lvxunDev/yunhetong-android-sdk/tree/master
+  [2]: http://sdk.yunhetong.com/sdk/open/userApp/appManageView
 
   

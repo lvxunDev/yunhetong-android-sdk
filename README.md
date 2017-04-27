@@ -18,7 +18,7 @@
 
     include ':yhtsdk' 
 
-然后再回到你的 app 目录下的 ```build.gradle```
+在 app 目录下的 ```build.gradle```
 文件，在 ```dependencies```节点下加入：
 
     dependencies {
@@ -192,33 +192,20 @@ Sdk提供签名绘制面板YhtSignDrawView，有获取签名数据和清除签�
 
 可能使用到的类说明
 
-| **Class**                     |            **Class description**                          |
-
-|-------------------------------|-----------------------------------------------------------|
-
-|   YhtSdk                      |  SDK的入口类。提供SDK初始化,token初始化，相关请求的方法。        |
-
-|   YhtContent                  |  常量类，提供接口URL,请求码，常量                            |
-
-|   RespondObject               |  网络响应类                             |
-
-|   YhtContract                 |  合同详情类                                |
-
-|   YhtContractParter           |  合同附加信息类                                          |
-
-|   YhtSign                     |  签名类                                |
-
-|   ContractDetailActivity      |  合同详情页，集成合同查看、作废、签署功能                     |
-
-|   ContractPreviewActivity     |  合同预览页，集成合同查看、合同签署功能                       |
-
-|   SignDetailActivity          |  签名信息页，集成签名查看、签名删除功能                |
-
-|   SignGeneratorActivity       |  新增签名页，集成签名绘制画板，签名创建功能                |
-
-|   YhtSignDrawView             |  签名画板                                                 |
-
-|   YhtWebView                  |  WeBView                                                  |
+         |    Class                      |            Class description                              |
+         |-------------------------------|-----------------------------------------------------------|
+         |   YhtSdk                      |  SDK的入口类。提供SDK初始化,token初始化，相关请求的方法。 |
+         |   YhtContent                  |  常量类，提供接口URL,请求码，常量                         |
+         |   RespondObject               |  网络响应类                                               |
+         |   YhtContract                 |  合同详情类                                               |
+         |   YhtContractParter           |  合同附加信息类                                           |
+         |   YhtSign                     |  签名类                                                   |
+         |   ContractDetailActivity      |  合同详情页，集成合同查看、作废、签署功能                 |
+         |   ContractPreviewActivity     |  合同预览页，集成合同查看、合同签署功能                   |
+         |   SignDetailActivity          |  签名信息页，集成签名查看、签名删除功能                   |
+         |   SignGeneratorActivity       |  新增签名页，集成签名绘制画板，签名创建功能               |
+         |   YhtSignDrawView             |  签名画板                                                 |
+         |   YhtWebView                  |  WebView + 进度条                                                |
 
 
   [1]: https://github.com/lvxunDev/yunhetong-android-sdk/tree/master

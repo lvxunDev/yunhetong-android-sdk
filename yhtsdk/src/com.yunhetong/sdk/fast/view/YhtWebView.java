@@ -60,6 +60,7 @@ public class YhtWebView extends RelativeLayout {
             mWebView.clearHistory();
             mWebView.destroyDrawingCache();
             mWebView.destroy();
+            mWebView = null;
         }
     }
     public void setVisibility(){
@@ -69,4 +70,7 @@ public class YhtWebView extends RelativeLayout {
         }
     }
 
+    public SdkWebView getmWebView() {
+        return mWebView;
+    }
 }

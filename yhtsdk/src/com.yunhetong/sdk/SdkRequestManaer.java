@@ -33,7 +33,7 @@ public final class SdkRequestManaer implements IYhtSdkRequest {
      */
     public static String getContractUrl(String contractId) {
         String contractUrl = YhtContent.URL_CONTRACTDETAILVIEW + "?contractId=" + contractId + "&token=" + TokenManager.getInstance().getToken();
-        YhtLog.d("YhtHttpClient", "ContractDetailUrl: " + contractUrl);
+        YhtLog.e("YhtHttpClient", "ContractDetailUrl: " + contractUrl);
         return contractUrl;
     }
 

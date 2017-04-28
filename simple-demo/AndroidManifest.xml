@@ -8,22 +8,28 @@
 
     <application
         android:name=".MyApplication"
-        tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/SDKAppTheme">
+        android:theme="@style/SDKAppTheme"
+        tools:replace="android:allowBackup">
 
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ConfirmActivity" />
-        <activity android:name=".ContractListActivity" />
+        <activity
+            android:name=".ConfirmActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".ContractListActivity"
+            android:configChanges="orientation|screenSize" />
 
         <!--注册从云合同开发者平台注册的AppId-->
         <meta-data

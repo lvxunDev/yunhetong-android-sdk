@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.yunhetong.sdk.tool.YhtDialogUtil;
@@ -32,6 +33,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private static volatile Stack<Activity> activityStack;
+
     public static Stack<Activity> getStack() {
         if (activityStack == null) {
             synchronized (BaseActivity.class) {
@@ -67,6 +69,13 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * finish and remove activity

@@ -14,6 +14,7 @@ public final class YhtContent {
 //    public static final String YHT_HOST = "http://sdk.yunhetong.com";
 
 
+    public static final String URL_YHT_SERVICE = YHT_HOST + "/sdk/viewsopen/m/contract_view_m.html";
     /**
      * 合同详情
      * 1.通知TAG

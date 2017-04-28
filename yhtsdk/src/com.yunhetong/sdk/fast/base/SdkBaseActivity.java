@@ -12,7 +12,6 @@ public abstract class SdkBaseActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yht_fragment_content_layout);
         BaseActivity.addActivity(this);

@@ -15,6 +15,7 @@ import com.lx.yht.net.TokenRequest;
 import com.yunhetong.sdk.YhtSdk;
 import com.yunhetong.sdk.base.net.HttpCallBackListener;
 import com.yunhetong.sdk.base.bean.YhtContract;
+import com.yunhetong.sdk.fast.YhtServiceActivity;
 import com.yunhetong.sdk.tool.YhtLog;
 import com.yunhetong.sdk.fast.base.BaseActivity;
 import com.yunhetong.sdk.fast.ContractDetailActivity;
@@ -56,17 +57,6 @@ public class ContractListActivity extends BaseActivity implements AdapterView.On
         getBar().setTitle("合同列表");
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -77,7 +67,8 @@ public class ContractListActivity extends BaseActivity implements AdapterView.On
     //跳转合同详情
     private void gotoContractDetail(YhtContract contract) {
         //详情
-        ContractDetailActivity.gotoContractDetailActForResult(this, String.valueOf(contract.getId()));
+        YhtServiceActivity.gotoYhtServiceActivity(this, String.valueOf(contract.getId()));
+//        ContractDetailActivity.gotoContractDetailActForResult(this, String.valueOf(contract.getId()));
     }
 
     private void requestToken() {

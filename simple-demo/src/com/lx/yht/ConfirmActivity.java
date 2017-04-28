@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.lx.yht.net.TokenRequest;
-import com.yunhetong.sdk .YhtSdk;
+import com.yunhetong.sdk.YhtSdk;
 import com.yunhetong.sdk.base.net.HttpCallBackListener;
-import com.yunhetong.sdk.fast.base.BaseActivity;
 import com.yunhetong.sdk.fast.ContractDetailActivity;
+import com.yunhetong.sdk.fast.YhtServiceActivity;
+import com.yunhetong.sdk.fast.base.BaseActivity;
 import com.yunhetong.sdk.tool.YhtLog;
 
 import org.json.JSONException;
@@ -50,18 +50,6 @@ public class ConfirmActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     public void getTokenWithContract() {
         getProgressDialog().show();
         new TokenRequest().requestTokenWithContract(this, new HttpCallBackListener<String>() {
@@ -81,7 +69,8 @@ public class ConfirmActivity extends BaseActivity {
                 //初始化 并跳转
                 if (!TextUtils.isEmpty(token)) {
                     YhtSdk.getInstance().setToken(token,null);
-                    ContractDetailActivity.gotoContractDetailActForResult(ConfirmActivity.this, String.valueOf(contractId));
+                   YhtServiceActivity.gotoYhtServiceActivity(ConfirmActivity.this, String.valueOf(contractId));
+//                    ContractDetailActivity.gotoContractDetailActForResult(ConfirmActivity.this, String.valueOf(contractId));
                 }else {
                     Toast.makeText(ConfirmActivity.this, "返回token为null", Toast.LENGTH_SHORT).show();
                 }

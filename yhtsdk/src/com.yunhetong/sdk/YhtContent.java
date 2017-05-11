@@ -14,12 +14,10 @@ public final class YhtContent {
 //    public static final String YHT_HOST = "http://sdk.yunhetong.com";
 
 
-    public static final String URL_YHT_SERVICE = YHT_HOST + "/sdk/viewsopen/m/contract_view_m.html";
+    public static final String URL_YHT_SERVICE = YHT_HOST + "/sdk/contract/hView";
+
     /**
      * 合同详情
-     * 1.通知TAG
-     * 2.url
-     * 3.请求码
      */
     public static final String URL_CONTRACTDETAIL = YHT_HOST + "/sdk/contract/view";
     public static final byte REQUESTCODE_CONTRACTDETAIL = 4;

@@ -1,7 +1,7 @@
 package com.yunhetong.sdk.tool;
 
 public final class YhtLog {
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     public static void d(String tag, String msg) {
         if (YhtLog.DEBUG) android.util.Log.d(tag, msg);

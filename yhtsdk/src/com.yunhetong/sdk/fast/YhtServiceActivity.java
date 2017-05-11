@@ -3,18 +3,15 @@ package com.yunhetong.sdk.fast;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.yunhetong.sdk.R;
-import com.yunhetong.sdk.SdkRequestManaer;
 import com.yunhetong.sdk.YhtContent;
 import com.yunhetong.sdk.base.TokenManager;
+import com.yunhetong.sdk.base.net.HttpCallBackListener;
 import com.yunhetong.sdk.fast.base.BaseActivity;
 import com.yunhetong.sdk.fast.view.YhtWebView;
 import com.yunhetong.sdk.tool.YhtLog;
@@ -23,7 +20,7 @@ import com.yunhetong.sdk.tool.YhtLog;
 /**
  * 总入口
  */
-public class YhtServiceActivity extends BaseActivity {
+public class YhtServiceActivity extends BaseActivity implements HttpCallBackListener<String> {
     private static final String TAG = YhtServiceActivity.class.getSimpleName();
     private static final String CONTRACT_ID = "yht_contract_id";
 
@@ -43,6 +40,9 @@ public class YhtServiceActivity extends BaseActivity {
         loadViewContractDetail();
     }
 
+    String getIntentData() {
+        return null == getIntent() ? null : getIntent().getStringExtra("yht_contract_id");
+    }
 
     void initUI() {
         YhtLog.e(TAG, "initUI");
@@ -52,9 +52,6 @@ public class YhtServiceActivity extends BaseActivity {
         layout.addView(mYhtWebView);
     }
 
-    String getIntentData() {
-        return null == getIntent() ? null : getIntent().getStringExtra("yht_contract_id");
-    }
 
     /**
      * 加载详情界面
@@ -70,7 +67,8 @@ public class YhtServiceActivity extends BaseActivity {
      * @param contractId 合同Id
      */
     public static String getContractUrl(String contractId) {
-        String contractUrl = YhtContent.URL_YHT_SERVICE + "?contractId=" + contractId + "&token=" + TokenManager.getInstance().getToken();
+        String contractUrl = YhtContent.URL_YHT_SERVICE + "?contractId="
+                + contractId + "&token=" + TokenManager.getInstance().getToken();
         YhtLog.e("YhtHttpClient", "ContractDetailUrl: " + contractUrl);
         return contractUrl;
     }
@@ -96,5 +94,16 @@ public class YhtServiceActivity extends BaseActivity {
         }
         ViewGroup view = (ViewGroup) this.getWindow().getDecorView();
         view.removeAllViews();
+    }
+
+
+    @Override
+    public void onHttpSucceed(String url, String response, int RequestCode) {
+        YhtLog.e(TAG, "onHttpSucceed" + response);
+    }
+
+    @Override
+    public void onHttpFail(String url, String msg, int RequestCode) {
+        YhtLog.e(TAG, "onHttpFail" + msg);
     }
 }

@@ -1,6 +1,8 @@
 package com.lx.yht;
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import com.lx.yht.net.TokenRequest;

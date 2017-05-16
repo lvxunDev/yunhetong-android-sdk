@@ -39,7 +39,7 @@ public final class TokenManager {
         mToken.init(token, 0);
         YhtSPUtils.put(mContext, TOKEN, mToken.getToken());
         YhtSPUtils.put(mContext, TOKEN_TIME, mToken.getDate());
-        YhtLog.d(TAG, " YhtSPUtils: " + token + "   token time: " + String.valueOf(mToken.getDate()));
+        YhtLog.e(TAG, " YhtSPUtils: " + token + "   token time: " + String.valueOf(mToken.getDate()));
 
 
         if (null != action) {

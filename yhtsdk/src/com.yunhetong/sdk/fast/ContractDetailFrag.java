@@ -187,7 +187,7 @@ public class ContractDetailFrag extends SdkBaseFragment implements ConfirmAlertD
         switch (RequestCode) {
             case YhtContent.REQUESTCODE_CONTRACTDETAIL:
                 YhtContract contract = YhtContract.jsonToBean(object);
-                YhtLog.d(TAG, "返回-合同详情 :" + contract.toString());
+                YhtLog.e(TAG, "返回-合同详情 :" + contract.toString());
                 mRequestContractData = contract;
                 if (null != mYhtWebView ) {
                     setMenuState(mRequestContractData);
@@ -195,14 +195,14 @@ public class ContractDetailFrag extends SdkBaseFragment implements ConfirmAlertD
                 }
                 break;
             case YhtContent.REQUESTCODE_CONTRACTINVALID:
-                YhtLog.d(TAG, "合同作废成功");
+                YhtLog.e(TAG, "合同作废成功");
 //                contractDetail();
                 Intent intent = new Intent();
                 getActivity().setResult(ContractDetailActivity.result_code_invalid, intent);
                 break;
             case YhtContent.REQUESTCODE_CONTRACTSIGN:
                 contractDetail();
-                YhtLog.d(TAG, "合同签署成功");
+                YhtLog.e(TAG, "合同签署成功");
                 Intent intent2 = new Intent();
                 getActivity().setResult(ContractDetailActivity.result_code_signfinish, intent2);
                 break;
@@ -214,7 +214,7 @@ public class ContractDetailFrag extends SdkBaseFragment implements ConfirmAlertD
     @Override
     public void onHttpFail(String url, String msg, int RequestCode) {
         getProgressDialog().dismiss();
-        YhtLog.d(TAG, "失败原因 :" + msg);
+        YhtLog.e(TAG, "失败原因 :" + msg);
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
@@ -240,7 +240,7 @@ public class ContractDetailFrag extends SdkBaseFragment implements ConfirmAlertD
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        YhtLog.d(TAG, "onActivityResult");
+        YhtLog.e(TAG, "onActivityResult");
         if (requestCode == SignGeneratorActivity.requestCode && resultCode == Activity.RESULT_OK) {
             contractSign();
         }

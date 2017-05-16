@@ -67,7 +67,7 @@ public class YhtHttpClient {
                     .getApplicationInfo(mContext.getPackageName(), PackageManager.GET_META_DATA);
             String yhtSdk_appId = appInfo.metaData.getString("YhtSdk_AppId");
             appId = yhtSdk_appId.replace("id_", "");
-            YhtLog.d(TAG, "appid :" + appId);
+            YhtLog.e(TAG, "appid :" + appId);
         } catch (Exception e) {
             throw new SdkAppIdNullException("appId 没有找到,请在AndroidManifest中配置 <meta-data android:name=\"YhtSdk_AppId\" android:value=\"id_2016050516421\" />");
         }
@@ -109,7 +109,7 @@ public class YhtHttpClient {
      */
     private boolean tokenValidationCheck() {
         if (TokenManager.getInstance().isOverdue() || (TokenManager.getInstance().getToken() == null)) {
-            YhtLog.d(TAG, "本地token超时，发起回调");
+            YhtLog.e(TAG, "本地token超时，发起回调");
             return true;
         }
         return false;
@@ -135,7 +135,7 @@ public class YhtHttpClient {
         if (params != null && params.size() > 0) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 builder.addParams(entry.getKey(), entry.getValue());
-                YhtLog.d(TAG, "key= " + entry.getKey() + " and value= " + entry.getValue());
+                YhtLog.e(TAG, "key= " + entry.getKey() + " and value= " + entry.getValue());
             }
         }
         builder.build().execute(new MyCallBack(url, requestCode, params, onCallBack));
@@ -188,7 +188,7 @@ public class YhtHttpClient {
 
         @Override
         public void onError(Call call, Exception e, int id) {
-            YhtLog.d(TAG, "onErrorResponse { url : " + url + " error:" + e.getMessage() + "}");
+            YhtLog.e(TAG, "onErrorResponse { url : " + url + " error:" + e.getMessage() + "}");
             if (onCallBack != null)
                 onCallBack.onHttpFail(url, "网络异常，请稍后再试", requestCode);
         }
@@ -201,7 +201,7 @@ public class YhtHttpClient {
                 if (onCallBack != null)
                     onCallBack.onHttpSucceed(url, response, requestCode);
             } else if (respondObject.isInvalid()) {
-                YhtLog.d(TAG, "服务端返回参数判断--发起回调");
+                YhtLog.e(TAG, "服务端返回参数判断--发起回调");
                 Action action = new Action(url, requestCode, Request.Method.POST, params, onCallBack);
                 TokenManager.getInstance().getTokenListener().onToken(action);
             } else {
@@ -212,7 +212,7 @@ public class YhtHttpClient {
 
         @Override
         public String parseNetworkResponse(okhttp3.Response response, int id) throws IOException {
-            YhtLog.d(TAG, "parseNetworkResponse" + response.message());
+            YhtLog.e(TAG, "parseNetworkResponse" + response.message());
             return super.parseNetworkResponse(response, id);
         }
     }
@@ -227,7 +227,7 @@ public class YhtHttpClient {
                     encodedParams.append('=');
                     encodedParams.append(URLEncoder.encode(entry.getValue(), paramsEncoding));
                     encodedParams.append('&');
-                    YhtLog.d(TAG, "key= " + entry.getKey() + " and value= " + entry.getValue());
+                    YhtLog.e(TAG, "key= " + entry.getKey() + " and value= " + entry.getValue());
                 }
                 return encodedParams.toString();
             } catch (UnsupportedEncodingException uee) {

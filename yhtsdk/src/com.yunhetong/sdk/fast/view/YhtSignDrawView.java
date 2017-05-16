@@ -64,7 +64,7 @@ public class YhtSignDrawView extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        YhtLog.d(TAG, "onSizeChanged()");
+        YhtLog.e(TAG, "onSizeChanged()");
         super.onSizeChanged(w, h, oldw, oldh);
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
@@ -75,7 +75,7 @@ public class YhtSignDrawView extends View {
         // Lx.d(TAG, "onDraw()");
         canvas.drawColor(0xFFFFFFFF);
         if (shouldClear.get()) { //清除
-            YhtLog.d(TAG, "shouldClear");
+            YhtLog.e(TAG, "shouldClear");
             shouldClear.set(false);
             // 清除需要重新将bitmap绑定到canvas
             mBitmap.recycle();
@@ -119,7 +119,7 @@ public class YhtSignDrawView extends View {
         float y = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                YhtLog.d(TAG, "onTouchEvent()   ACTION_DOWN ");
+                YhtLog.e(TAG, "onTouchEvent()   ACTION_DOWN ");
                 touch_start(x, y);
                 invalidate();
                 break;
@@ -129,7 +129,7 @@ public class YhtSignDrawView extends View {
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                YhtLog.d(TAG, "onTouchEvent()   ACTION_UP ");
+                YhtLog.e(TAG, "onTouchEvent()   ACTION_UP ");
                 touch_up();
                 invalidate();
                 break;

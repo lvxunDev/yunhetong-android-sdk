@@ -134,7 +134,7 @@ public class SignDetailFrag extends SdkBaseFragment implements HttpCallBackListe
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        YhtLog.d(TAG, "onActivityResult");
+        YhtLog.e(TAG, "onActivityResult");
         if (requestCode == SignGeneratorActivity.requestCode && resultCode == Activity.RESULT_OK) {
             String signbt = data.getStringExtra(SignGeneratorActivity.result_generator);
             showSignView(signbt);

@@ -42,7 +42,7 @@ public class ImageBase64Util {
                 return null;
             }
         }
-        YhtLog.d(TAG, encoded);
+        YhtLog.e(TAG, encoded);
         return encoded;
     }
 

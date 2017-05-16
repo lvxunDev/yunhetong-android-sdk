@@ -121,7 +121,7 @@ public class YhtScreenUtil {
             int statusHeight = YhtScreenUtil.getStatusHeight(ctx);
             float density = YhtScreenUtil.getDeviceDensity(ctx);
             double physicalSize = YhtScreenUtil.getScreenPhysicalSize(ctx);
-            YhtLog.d("YHT", "device info "
+            YhtLog.e("YHT", "device info "
                     + " | width(px) : " + width
                     + " | height(px) : " + height
                     + " | statusHeight : " + statusHeight

@@ -60,7 +60,7 @@ public class SdkWebView extends WebView {
         settings.setDefaultTextEncodingName("UTF-8");
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);//支持缩放
-        settings.setBuiltInZoomControls(false);
+        settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);//支持内容重新布局
         settings.setUseWideViewPort(true);//将图片调整到适合webview的大小
@@ -73,6 +73,18 @@ public class SdkWebView extends WebView {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         //
+//        this.setScrollContainer(false);
+//        this.setScrollbarFadingEnabled(false);
+//        this.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
+//        WebSettings settings = this.getSettings();
+//        settings.setDefaultTextEncodingName("UTF-8");
+//        settings.setJavaScriptEnabled(true);
+//        settings.setSupportZoom(true);
+//        settings.setDisplayZoomControls(false);
+//        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+//        settings.setUseWideViewPort(true);
+//        settings.setLoadWithOverviewMode(true);
+//        settings.setLoadsImagesAutomatically(true);
         setWebViewClient(new SdkWebViewClient());
         setWebChromeClient(new SdkWebChromeClient());
     }

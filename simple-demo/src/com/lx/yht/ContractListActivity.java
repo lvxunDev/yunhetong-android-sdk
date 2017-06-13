@@ -77,7 +77,7 @@ public class ContractListActivity extends BaseActivity implements AdapterView.On
             @Override
             public void onHttpSucceed(String url, String object, int RequestCode) {
                 getProgressDialog().dismiss();
-                YhtLog.d(TAG, "onHttpSucceed  data:" + object);
+                YhtLog.e(TAG, "onHttpSucceed  data:" + object);
                 String tokenStr = null;
                 List<YhtContract> contracts = null;
                 try {
